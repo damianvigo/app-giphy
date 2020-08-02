@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useState } from 'react';
 import './App.css';
-import getGifs from './services/getGifs';
 import ListOfGifs from './components/ListOfGifs';
 
 function App() {
-  const [gifs, setGifs] = useState([]);
-  // value = state[0],
-  // setValue = state[1];
-
-  useEffect(function () {
-    getGifs({ keyword: 'programming' }).then((gifs) => setGifs(gifs));
-  }, []);
+  const [keyword, setKeyword] = useState('cats');
+  console.log(keyword);
 
   return (
     <div className='App'>
       <section className='App-content'>
-        <ListOfGifs gifs={gifs} />
+        <button onClick={() => setKeyword('omg')}>Cambiar Keyword</button>
+        <ListOfGifs keyword={keyword} />
       </section>
     </div>
   );
